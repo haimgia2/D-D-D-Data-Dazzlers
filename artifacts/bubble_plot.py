@@ -4,9 +4,6 @@ import plotly.express as px
 # reads the excel file
 df = pd.read_excel("datasets\\Box Office Mojo.xlsx", sheet_name="box office genre revenue", usecols=["Genre", "Total", "Titles"], engine="openpyxl")
 
-print('DATAFRAME')
-print(df)
-
 # Create a bubble chart
 fig = px.scatter(
     df,
