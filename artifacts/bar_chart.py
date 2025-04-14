@@ -13,28 +13,14 @@ hulu_df = pd.read_csv("datasets\\hulu_titles.csv", usecols=["type", "listed_in"]
 # reads csv file from disney+
 disney_df = pd.read_csv("datasets\\disney_plus_titles.csv", usecols=["type", "listed_in"])
 
-print("NETFLIX")
-print(netflix_df)
-
-print("AMAZON PRIME")
-print(prime_df)
-
-print("HULU")
-print(hulu_df)
-
-print("DISNEY+")
-print(disney_df)
-
-# Split the listed_in column into lists
-genres = set()
-
+# splits up the multiple genres per film by commas
 netflix_df['listed_in'] = netflix_df['listed_in'].str.split(", ")
 prime_df['listed_in'] = prime_df['listed_in'].str.split(", ")
 hulu_df['listed_in'] = hulu_df['listed_in'].str.split(", ")
 disney_df['listed_in'] = disney_df['listed_in'].str.split(", ")
 
-#print(netflix_df['listed_in'])
-#print(netflix_df.dtypes)
+genres = set()
+# gets all available genres in netflix, prime, hulu, and disney+
 for row in netflix_df.itertuples():
     genres.update(row.listed_in)
 
@@ -46,9 +32,6 @@ for row in hulu_df.itertuples():
 
 for row in disney_df.itertuples():
     genres.update(row.listed_in)
-
-
-print(genres)
 
 # makes empty dictionaries for netflix
 netflix_genre_count = {}
@@ -146,6 +129,7 @@ disney_genre_count = dict(sorted(disney_genre_count.items()))
 disney_genre_count_movie_and_shows["Movie"] = dict(sorted(disney_genre_count_movie_and_shows["Movie"].items()))
 disney_genre_count_movie_and_shows["TV Show"] = dict(sorted(disney_genre_count_movie_and_shows["TV Show"].items()))
 
+# preparing the labels for the treemap
 length = len(genres) * 2
 
 netflix_list = ["Netflix"] * length
