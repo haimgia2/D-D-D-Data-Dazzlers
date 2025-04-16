@@ -317,14 +317,34 @@ if __name__ == "__main__":
         ),
         legend_title_text="Streaming Platforms",
         annotations=[
-        dict(
-            text="Note: Bubble size represents market share (%). Some platforms are missing due to missing data per year",
-            xref="paper", yref="paper",
-            x=0.5, y=-0.15,  
-            showarrow=False,
-            font=dict(size=12)
-        )
-    ]
+            dict(
+                text="Note: Bubble size represents market share (%). Some platforms are missing due to missing data per year",
+                xref="paper", yref="paper",
+                x=0.5, y=-0.15,  
+                showarrow=False,
+                font=dict(size=12)
+            ),
+            dict(
+                text=(
+                    "Start Dates:<br>"
+                    "• Youtube: 2005<br>"
+                    "• Netflix: 2007<br>"
+                    "• Hulu: 2008<br>"
+                    "• Prime Video: 2011<br>"
+                    "• Twitch: 2011<br>"
+                    "• Tubi: 2014<br>"
+                    "• Disney+: 2019<br>"
+                    "• HBO Max: 2020"
+                ),
+                xref="paper", yref="paper",
+                x=1.05, y=0.05,  # Move to the right of the chart, near the top
+                xanchor='left',
+                yanchor='top',
+                showarrow=False,
+                align='left',
+                font=dict(size=12)
+            ),
+        ]
 
     )
     fig.show()
