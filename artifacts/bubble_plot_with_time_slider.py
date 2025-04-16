@@ -47,10 +47,7 @@ def getMarketShare(df):
     df["market share"] = market_shares
 
     return df
-
-
         
-
 if __name__ == "__main__":
 
     # data cleaning
@@ -280,16 +277,16 @@ if __name__ == "__main__":
     bubble_df["revenue"] = bubble_df["revenue"].fillna(0)
     bubble_df["market share"] = bubble_df["market share"].fillna(0)
 
-    # custom colors for the bubble plot
     custom_colors = {
-        "Youtube": "#d73027",
-        "Netflix": "#fc8d59",
-        "Hulu": "#fee08b",
-        "Disney+": "#91cf60",
-        "Prime Video": "#4575b4",
-        "Twitch": "#7b3294",  
-        "Tubi": "#984ea3"         
-    }
+    "Youtube": "#ffe119",         # Yellow
+    "Netflix": "#e6194b",      # Red
+    "Hulu": "#3cb44b",      # Green
+    "Disney+": "#4363d8",      # Blue
+    "Prime Video": "#f58231",  # Orange
+    "Twitch": "#911eb4",       # Purple
+    "Tubi": "#42d4f4",          # Cyan
+    "HBO Max": "#f032e6"       # Magenta
+}
 
     # makes the bubble plot
     fig = px.scatter(
