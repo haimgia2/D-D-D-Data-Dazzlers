@@ -270,7 +270,7 @@ if __name__ == "__main__":
     bubble_df = pd.merge(full_index, bubble_df, on=["year", "platform"], how="left")
 
     # saves dataframe to csv
-    bubble_df.to_csv(os.path.join(FOLDER, 'cleaned_data.csv'))
+    bubble_df.to_csv(os.path.join(FOLDER, 'cleaned_data.csv'), index=False)
 
     # cleaning data of null values before plotting it into a bubble plot
     bubble_df["subscribers"] = bubble_df["subscribers"].fillna(0)
@@ -278,15 +278,15 @@ if __name__ == "__main__":
     bubble_df["market share"] = bubble_df["market share"].fillna(0)
 
     custom_colors = {
-    "Youtube": "#ffe119",         # Yellow
-    "Netflix": "#e6194b",      # Red
-    "Hulu": "#3cb44b",      # Green
-    "Disney+": "#4363d8",      # Blue
-    "Prime Video": "#f58231",  # Orange
-    "Twitch": "#911eb4",       # Purple
-    "Tubi": "#42d4f4",          # Cyan
-    "HBO Max": "#f032e6"       # Magenta
-}
+        "Youtube": "#ffe119",         # Yellow
+        "Netflix": "#e6194b",      # Red
+        "Hulu": "#3cb44b",      # Green
+        "Disney+": "#4363d8",      # Blue
+        "Prime Video": "#f58231",  # Orange
+        "Twitch": "#911eb4",       # Purple
+        "Tubi": "#42d4f4",          # Cyan
+        "HBO Max": "#f032e6"       # Magenta
+    }
 
     # makes the bubble plot
     fig = px.scatter(
