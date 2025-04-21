@@ -9,6 +9,8 @@ from dash import dcc, html
 import os
 
 DATASETS_PATH = os.path.join("artifacts", "datasets")
+ASSETS_PATH = os.path.join("YearlyRevenue", "assets")
+
 
 def initialize_dashboard(datasets_path):
     # Initialize the Dash app
@@ -17,20 +19,26 @@ def initialize_dashboard(datasets_path):
     app.layout = html.Div([
     html.H1("Streaming Services Revenue and Subscriptions", style={'textAlign': 'center'}),
 
-    html.Div([
-        dcc.Graph(figure=make_tree_map(datasets_path)),
-        dcc.Graph(figure=make_bubble_plot(datasets_path)),
-        dcc.Graph(figure=make_side_line_charts()),
-        dcc.Graph(figure=make_bump_chart(datasets_path)),
-        dcc.Graph(figure=make_racing_bar_chart(datasets_path)),
-        dcc.Graph(figure=make_dual_axis(datasets_path)),
-    ], style={
-        'display': 'block',            # Stack elements vertically
-        'maxHeight': '90vh',           # Optional: Limit height of the container
-        'overflowY': 'auto',           # Enable vertical scrolling
-        'padding': '20px'
-    })
-])
+        html.Div([
+            dcc.Graph(figure=make_tree_map(datasets_path)),
+            dcc.Graph(figure=make_bubble_plot(datasets_path)),
+            dcc.Graph(figure=make_side_line_charts()),
+            dcc.Graph(figure=make_bump_chart(datasets_path)),
+            dcc.Graph(figure=make_racing_bar_chart(datasets_path)),
+            dcc.Graph(figure=make_dual_axis(datasets_path)),
+        ], style={
+            'display': 'block',
+            'maxHeight': '90vh', 
+            'overflowY': 'auto',
+            'padding': '20px'
+        }),
+        html.Video(
+            src=os.path.join(ASSETS_PATH, "yearly_revenue_animation.mp4"),
+            controls=True,
+            autoPlay=False,
+            style={"width": "100%", "maxWidth": "900px", "margin": "auto", "display": "block"}
+        )
+    ])
 
     return app
 
