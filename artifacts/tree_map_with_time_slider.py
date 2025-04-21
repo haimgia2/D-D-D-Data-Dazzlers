@@ -21,7 +21,7 @@ def simple_lighten(hex_color, amount=20):
     b = min(255, int(hex_color[4:6], 16) + amount)
     return f'#{r:02x}{g:02x}{b:02x}'
 
-if __name__ == "__main__":
+def make_tree_map(datasets_path):
 
     # declares and initializes variables
     years = []
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     values = []
     years_dict = {}
     
-    revenue_subscribers = pd.read_csv(os.path.join(FOLDER, "cleaned_data.csv"))
+    revenue_subscribers = pd.read_csv(os.path.join(datasets_path, "cleaned_data.csv"))
 
     # cleaning data of null values before plotting it into a bubble plot
     revenue_subscribers["subscribers"] = revenue_subscribers["subscribers"].fillna(0)
@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
     # Create a Label for each row
     tree_df["Label"] = tree_df["Platform"] + " - " + tree_df["Revenue/Subscribers"]
-    #tree_df["Label"] = tree_df["Revenue/Subscribers"] # i wanted to encode icons as revenue/subscribers but it wouldn't let me unless i zoom into a particular box
+    # tree_df["Label"] = tree_df["Revenue/Subscribers"] # i wanted to encode icons as revenue/subscribers but it wouldn't let me unless i zoom into a particular box
 
     # Create Parent = Platform for Revenue/Subscriber rows
     tree_df["Parent"] = tree_df["Platform"]
@@ -171,7 +171,7 @@ if __name__ == "__main__":
     fig.update_layout(
         annotations=[
             dict(
-                text="Note: Some platforms are missing due to missing data per year",
+                text="Note: Some platforms are missing due to missing data per year. Some data on revenue or subscribers for a specific platform are also missing as well",
                 xref="paper", yref="paper",
                 x=0.5, y=-0.15,  
                 showarrow=False,
@@ -194,4 +194,4 @@ if __name__ == "__main__":
 
     )
 
-    fig.show()
+    return fig

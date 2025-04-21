@@ -48,25 +48,25 @@ def getMarketShare(df):
 
     return df
         
-if __name__ == "__main__":
+def make_bubble_plot(datasets_path):
 
     # data cleaning
-    hulu_revenue = pd.read_excel(os.path.join(FOLDER, HULU), sheet_name="Hulu annual revenue")
-    hulu_subscribers = pd.read_excel(os.path.join(FOLDER, HULU), sheet_name="Hulu annual streaming subscribe")
-    netflix_revenue = pd.read_excel(os.path.join(FOLDER, NETFLIX), sheet_name="Netflix annual revenue")
-    netflix_subscribers = pd.read_excel(os.path.join(FOLDER, NETFLIX), sheet_name="Netflix annual subscribers")
-    prime_revenue = pd.read_excel(os.path.join(FOLDER, PRIME), sheet_name="Amazon prime video revenue")
-    prime_subscribers = pd.read_excel(os.path.join(FOLDER, PRIME), sheet_name="Amazon prime video users")
-    disney_revenue = pd.read_excel(os.path.join(FOLDER, DISNEY), sheet_name="Disney Plus annual revenue")
-    disney_subscribers = pd.read_excel(os.path.join(FOLDER, DISNEY), sheet_name="Disney Plus annual subscribers")
-    hbo_revenue = pd.read_excel(os.path.join(FOLDER, HBO), sheet_name="HBO Max annual revenue")
-    hbo_subscribers = pd.read_excel(os.path.join(FOLDER, HBO), sheet_name="HBO Max subs")
-    youtube_revenue = pd.read_excel(os.path.join(FOLDER, YOUTUBE), sheet_name="YouTube annual revenue")
-    youtube_subscribers = pd.read_excel(os.path.join(FOLDER, YOUTUBE), sheet_name="YouTube Premium subscribers")
-    tubi_revenue = pd.read_excel(os.path.join(FOLDER, TUBI), sheet_name="Tubi revenue")
-    tubi_subscribers = pd.read_excel(os.path.join(FOLDER, TUBI), sheet_name="Tubi users")
-    twitch_revenue = pd.read_excel(os.path.join(FOLDER, TWITCH), sheet_name="Twitch annual revenue")
-    twitch_subscribers = pd.read_excel(os.path.join(FOLDER, TWITCH), sheet_name="Twitch annual concurrent viewer")
+    hulu_revenue = pd.read_excel(os.path.join(datasets_path, HULU), sheet_name="Hulu annual revenue")
+    hulu_subscribers = pd.read_excel(os.path.join(datasets_path, HULU), sheet_name="Hulu annual streaming subscribe")
+    netflix_revenue = pd.read_excel(os.path.join(datasets_path, NETFLIX), sheet_name="Netflix annual revenue")
+    netflix_subscribers = pd.read_excel(os.path.join(datasets_path, NETFLIX), sheet_name="Netflix annual subscribers")
+    prime_revenue = pd.read_excel(os.path.join(datasets_path, PRIME), sheet_name="Amazon prime video revenue")
+    prime_subscribers = pd.read_excel(os.path.join(datasets_path, PRIME), sheet_name="Amazon prime video users")
+    disney_revenue = pd.read_excel(os.path.join(datasets_path, DISNEY), sheet_name="Disney Plus annual revenue")
+    disney_subscribers = pd.read_excel(os.path.join(datasets_path, DISNEY), sheet_name="Disney Plus annual subscribers")
+    hbo_revenue = pd.read_excel(os.path.join(datasets_path, HBO), sheet_name="HBO Max annual revenue")
+    hbo_subscribers = pd.read_excel(os.path.join(datasets_path, HBO), sheet_name="HBO Max subs")
+    youtube_revenue = pd.read_excel(os.path.join(datasets_path, YOUTUBE), sheet_name="YouTube annual revenue")
+    youtube_subscribers = pd.read_excel(os.path.join(datasets_path, YOUTUBE), sheet_name="YouTube Premium subscribers")
+    tubi_revenue = pd.read_excel(os.path.join(datasets_path, TUBI), sheet_name="Tubi revenue")
+    tubi_subscribers = pd.read_excel(os.path.join(datasets_path, TUBI), sheet_name="Tubi users")
+    twitch_revenue = pd.read_excel(os.path.join(datasets_path, TWITCH), sheet_name="Twitch annual revenue")
+    twitch_subscribers = pd.read_excel(os.path.join(datasets_path, TWITCH), sheet_name="Twitch annual concurrent viewer")
 
 
     hulu_revenue_records = hulu_revenue.to_dict(orient="records")
@@ -270,7 +270,7 @@ if __name__ == "__main__":
     bubble_df = pd.merge(full_index, bubble_df, on=["year", "platform"], how="left")
 
     # saves dataframe to csv
-    bubble_df.to_csv(os.path.join(FOLDER, 'cleaned_data.csv'), index=False)
+    bubble_df.to_csv(os.path.join(datasets_path, 'cleaned_data.csv'), index=False)
 
     # cleaning data of null values before plotting it into a bubble plot
     bubble_df["subscribers"] = bubble_df["subscribers"].fillna(0)
@@ -347,4 +347,5 @@ if __name__ == "__main__":
         ]
 
     )
-    fig.show()
+
+    return fig
