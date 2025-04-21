@@ -2,6 +2,8 @@ from artifacts.bubble_plot_with_time_slider import make_bubble_plot
 from artifacts.tree_map_with_time_slider import make_tree_map
 from artifacts.side_by_side_line_charts import make_side_line_charts
 from artifacts.bump_chart import make_bump_chart
+from artifacts.racing_bar_chart import make_racing_bar_chart
+from artifacts.dual_axis import make_dual_axis
 import dash
 from dash import dcc, html
 import os
@@ -20,6 +22,8 @@ def initialize_dashboard(datasets_path):
         dcc.Graph(figure=make_bubble_plot(datasets_path)),
         dcc.Graph(figure=make_side_line_charts()),
         dcc.Graph(figure=make_bump_chart(datasets_path)),
+        dcc.Graph(figure=make_racing_bar_chart(datasets_path)),
+        dcc.Graph(figure=make_dual_axis(datasets_path)),
     ], style={
         'display': 'block',            # Stack elements vertically
         'maxHeight': '90vh',           # Optional: Limit height of the container
