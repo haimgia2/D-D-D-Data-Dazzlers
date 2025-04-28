@@ -23,20 +23,20 @@ prices = {
 
 #Consistent color map
 color_map = {
-    "Netflix": "#E50914",
-    "Hulu": "#1CE783",
-    "MAX": "#6A0DAD",
-    "Prime Video": "#00A8E1",
-    "Disney+": "#113CCF"
+    "Netflix": "#d70c1b",
+    "Hulu": "#57e880",
+    "MAX": "#2f16e1",
+    "Prime Video": "#48a8e2",
+    "Disney+": "#50b9ca"
 }
 
-#Chart titles
+# Create subplot layout
 fig = make_subplots(
     rows=1, cols=2,
     subplot_titles=("📈 Subscribers Over Time", "💰 Prices Over Time")
 )
 
-#Subscriber lines with consistent colors
+# Add subscriber lines with consistent colors
 for platform, values in subscribers.items():
     fig.add_trace(go.Scatter(
         x=years,
@@ -47,7 +47,7 @@ for platform, values in subscribers.items():
         line=dict(width=3, color=color_map[platform])
     ), row=1, col=1)
 
-#Price lines with same colors
+# Add price lines with same colors
 for platform, values in prices.items():
     fig.add_trace(go.Scatter(
         x=years,
@@ -59,13 +59,14 @@ for platform, values in prices.items():
         showlegend=False  # prevent duplicate legend
     ), row=1, col=2)
 
+# Layout and styling
 fig.update_layout(
     title=dict(
         text="Streaming Services: Subscribers and Prices (2020–2024)",
         x=0.5,
-        font=dict(size=24, color='white')
+        font=dict(size=24, color='black')
     ),
-    template="plotly_dark",
+    template="plotly_white",
     height=600,
     width=1100,
     legend=dict(
@@ -78,7 +79,7 @@ fig.update_layout(
     margin=dict(l=50, r=50, t=100, b=50)
 )
 
-#Axis titles
+# Axis titles
 fig.update_xaxes(title_text="Year", showgrid=False)
 fig.update_yaxes(title_text="Subscribers (millions)", row=1, col=1)
 fig.update_yaxes(title_text="Price (USD)", row=1, col=2)
