@@ -23,11 +23,14 @@ def make_side_line_charts():
 
     #Consistent color map
     color_map = {
-        "Netflix": "#E50914",
-        "Hulu": "#1CE783",
-        "MAX": "#6A0DAD",
-        "Prime Video": "#00A8E1",
-        "Disney+": "#113CCF"
+        "Netflix": '#d70c1b',      # Red
+        "Hulu": '#57e880',         # Light Green
+        "MAX": '#2f16e1',          # Dark Blue/Purple
+        "Disney+": '#50b9ca',      # Teal Blue
+        "Prime Video": '#48a8e2', # Light Blue
+        "Tubi": '#6800c2',         # Purple
+        "Twitch": '#f032e6',       # Primary Blue
+        "Youtube": '#ff7b00'       # Primary Bright Orange
     }
 
     #Chart titles
@@ -63,9 +66,9 @@ def make_side_line_charts():
         title=dict(
             text="Streaming Services: Subscribers and Prices (2020–2024)",
             x=0.5,
-            font=dict(size=24, color='white')
+            font=dict(size=24, color='black')
         ),
-        template="plotly_dark",
+        template="plotly_white",
         height=600,
         width=1100,
         legend=dict(

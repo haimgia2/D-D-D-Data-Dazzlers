@@ -37,14 +37,15 @@ def make_bump_chart(dataset_path):
 
     ## Create custom color map for plotting
     ## Colors are pulled from Streaming Service logos using color picker
-
     color_dict = {
-        "Netflix": '#d70c1b',
-        "Hulu": '#57e880',
-        "Max": '#2f16e1',
-        "Disney+": '#50b9ca',
-        "Amazon Prime": '#48a8e2',
-        "Tubi": '#fbff00'
+        "Netflix": '#d70c1b',      # Red
+        "Hulu": '#57e880',         # Light Green
+        "HBO MAX": '#2f16e1',          # Dark Blue/Purple
+        "Disney+": '#50b9ca',      # Teal Blue
+        "Amazon Prime": '#48a8e2', # Light Blue
+        "Tubi": '#6800c2',         # Purple
+        "Twitch": '#f032e6',       # Primary Blue
+        "Youtube": '#ff7b00'       # Primary Bright Orange
     }
 
     ##Create bump plot using data above

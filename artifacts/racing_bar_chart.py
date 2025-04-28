@@ -15,6 +15,18 @@ def make_racing_bar_chart(dataset_path):
     df_full = pd.merge(full_grid, df[['year', 'platform', 'revenue']], on=['year', 'platform'], how='left')
     df_full['revenue'] = df_full['revenue'].fillna(0)
 
+    # defines custom colors
+    custom_colors = {
+        "Netflix": '#d70c1b',      # Red
+        "Hulu": '#57e880',         # Light Green
+        "HBO MAX": '#2f16e1',          # Dark Blue/Purple
+        "Disney+": '#50b9ca',      # Teal Blue
+        "Prime Video": '#48a8e2', # Light Blue
+        "Tubi": '#6800c2',         # Purple
+        "Twitch": '#f032e6',       # Primary Blue
+        "Youtube": '#ff7b00'       # Primary Bright Orange
+    }
+
     fig = px.bar(
         df_full,
         x='revenue',
@@ -25,6 +37,7 @@ def make_racing_bar_chart(dataset_path):
         range_x=[0, df_full['revenue'].max() + 5000],
         title='Streaming Services Revenue Over the Years (2010-2024)',
         labels={'revenue': 'Revenue (in Millions)', 'platform': 'Streaming Services'},
+        color_discrete_map=custom_colors
     )
 
     fig.update_layout(
