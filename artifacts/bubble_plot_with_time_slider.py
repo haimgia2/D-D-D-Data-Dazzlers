@@ -277,15 +277,26 @@ def make_bubble_plot(datasets_path):
     bubble_df["revenue"] = bubble_df["revenue"].fillna(0)
     bubble_df["market share"] = bubble_df["market share"].fillna(0)
 
+    # custom_colors = {
+    #     "Youtube": "#ffe119",         # Yellow
+    #     "Netflix": "#e6194b",      # Red
+    #     "Hulu": "#3cb44b",      # Green
+    #     "Disney+": "#4363d8",      # Blue
+    #     "Prime Video": "#f58231",  # Orange
+    #     "Twitch": "#911eb4",       # Purple
+    #     "Tubi": "#42d4f4",          # Cyan
+    #     "HBO Max": "#f032e6"       # Magenta
+    # }
+
     custom_colors = {
-        "Youtube": "#ffe119",         # Yellow
-        "Netflix": "#e6194b",      # Red
-        "Hulu": "#3cb44b",      # Green
-        "Disney+": "#4363d8",      # Blue
-        "Prime Video": "#f58231",  # Orange
-        "Twitch": "#911eb4",       # Purple
-        "Tubi": "#42d4f4",          # Cyan
-        "HBO Max": "#f032e6"       # Magenta
+        "Netflix": '#d70c1b',      # Red
+        "Hulu": '#57e880',         # Light Green
+        "HBO MAX": '#2f16e1',          # Dark Blue/Purple
+        "Disney+": '#50b9ca',      # Teal Blue
+        "Prime Video": '#48a8e2', # Light Blue
+        "Tubi": '#6800c2',         # Purple
+        "Twitch": '#f032e6',       # Primary Blue
+        "Youtube": '#ff7b00'       # Primary Bright Orange
     }
 
     # makes the bubble plot

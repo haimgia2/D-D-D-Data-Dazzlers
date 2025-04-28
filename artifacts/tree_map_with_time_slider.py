@@ -80,21 +80,33 @@ def make_tree_map(datasets_path):
 
     # Add color mapping
     custom_colors = {
-        "Youtube": "#ffe119",       # Yellow
-        "Netflix": "#e6194b",       # Red
-        "Hulu": "#3cb44b",          # Green
-        "Disney+": "#4363d8",       # Blue
-        "Prime Video": "#f58231",   # Orange
-        "Twitch": "#911eb4",        # Purple
-        "Tubi": "#42d4f4",          # Cyan
-        "HBO MAX": "#f032e6"        # Magenta
+        "Netflix": '#d70c1b',      # Red
+        "Hulu": '#57e880',         # Light Green
+        "HBO MAX": '#2f16e1',          # Dark Blue/Purple
+        "Disney+": '#50b9ca',      # Teal Blue
+        "Prime Video": '#48a8e2', # Light Blue
+        "Tubi": '#6800c2',         # Purple
+        "Twitch": '#f032e6',       # Primary Blue
+        "Youtube": '#ff7b00'       # Primary Bright Orange
     }
+
+    # custom_colors = {
+    #     "Youtube": "#ffe119",       # Yellow
+    #     "Netflix": "#e6194b",       # Red
+    #     "Hulu": "#3cb44b",          # Green
+    #     "Disney+": "#4363d8",       # Blue
+    #     "Prime Video": "#f58231",   # Orange
+    #     "Twitch": "#911eb4",        # Purple
+    #     "Tubi": "#42d4f4",          # Cyan
+    #     "HBO MAX": "#f032e6"        # Magenta
+    # }
     
     # maps the base color for each platform
     full_df["Color"] = full_df["Platform"].map(custom_colors)
 
     # adds gradient scale for each sub box in each platform
     for index, row in full_df.iterrows():
+        #print(f"row {row}")
         if row["Revenue/Subscribers"] == "💰":
             full_df.loc[index, "Color"] = simple_darken(row["Color"], amount=50)
         elif row["Revenue/Subscribers"] == "👥":
