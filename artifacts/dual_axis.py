@@ -53,7 +53,7 @@ def make_dual_axis(datasets_path):
         yaxis2=dict(title='Subscribers (M)', overlaying='y', side='right'),
         barmode='group',
         template='plotly_white',
-        legend=dict(x=1.02, y=1, traceorder='normal', borderwidth=1)
+        legend=dict(x=1.10, y=1, traceorder='normal', borderwidth=1)
     )
 
     return fig

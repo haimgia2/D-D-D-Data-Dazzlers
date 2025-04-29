@@ -331,7 +331,7 @@ def make_bubble_plot(datasets_path):
             dict(
                 text="Note: Bubble size represents market share (%). Some platforms are missing due to missing data per year",
                 xref="paper", yref="paper",
-                x=0.5, y=-0.15,  
+                x=0.5, y=-0.3,  
                 showarrow=False,
                 font=dict(size=12)
             ),
